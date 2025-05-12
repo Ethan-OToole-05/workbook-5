@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.model;
 
 public class Vehicle {
     protected int vin;

@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.model;
 
 public class Car extends Vehicle {
     public Car(int vin, int speed, int fuelCapacity, int numberOfPassengers, String make, String color, int cargoCapacity) {
