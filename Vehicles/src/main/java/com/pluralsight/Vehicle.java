@@ -9,6 +9,16 @@ public class Vehicle {
     protected String color;
     protected int cargoCapacity;
 
+    public Vehicle(int vin, int speed, int fuelCapacity, int numberOfPassengers, String make, String color, int cargoCapacity) {
+        this.vin = vin;
+        this.speed = speed;
+        this.fuelCapacity = fuelCapacity;
+        this.numberOfPassengers = numberOfPassengers;
+        this.make = make;
+        this.color = color;
+        this.cargoCapacity = cargoCapacity;
+    }
+
     public int getVin() {
         return vin;
     }
@@ -72,5 +82,10 @@ public class Vehicle {
 
     public static void drive() {
         //starts driving.
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Vin: %d | Speed: %d | Fuel Capacity: %d | Number of Passengers: %d | Make: %s | Color: %s | Cargo Capacity: %d ", vin, speed, fuelCapacity, numberOfPassengers, make, color, cargoCapacity);
     }
 }

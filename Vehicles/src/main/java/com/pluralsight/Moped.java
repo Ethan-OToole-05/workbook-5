@@ -1,9 +1,14 @@
 package com.pluralsight;
 
 public class Moped extends Vehicle {
-
-    @Override
-    public String toString() {
-        return String.format(color + " " + fuelCapacity);
+    public Moped(int vin, int speed, int fuelCapacity, int numberOfPassengers, String make, String color, int cargoCapacity) {
+        super(vin, speed, fuelCapacity, numberOfPassengers, make, color, cargoCapacity);
     }
+
+
+//    @Override
+//    public String toString() {
+//        super.toString();
+//
+//    }
 }
