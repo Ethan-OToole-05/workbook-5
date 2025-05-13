@@ -8,7 +8,7 @@ public class App {
         ArrayList<Asset> assets = new ArrayList<>();
 
         assets.add(new House("test house", "05-13-2025", 1234567, "123 Example Street", 1, 750, 350));
-        assets.add(new House("test house", "05-13-2025", 1234, "123 Example Street", 1, 750, 350));
+        assets.add(new House("test house", "05-13-2025", 1234, "123 Example Street", 2, 750, 350));
 
         assets.add(new Vehicle("test car", "05-12-2025", 75000, "Honda Civic", 2025, 5));
         assets.add(new Vehicle("test car", "05-12-2025", 35000, "Honda Civic", 2019, 75000));
@@ -18,6 +18,7 @@ public class App {
             if (asset instanceof House) {
                 House house = (House) asset;
                 System.out.println(house.getAddress());
+                System.out.println(house.getValue());
             } else if (asset instanceof Vehicle) {
                 Vehicle vehicle = (Vehicle) asset;
                 System.out.println(vehicle.getYear() + " " + vehicle.getMakeModel());

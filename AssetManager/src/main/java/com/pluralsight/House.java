@@ -49,6 +49,26 @@ public class House extends Asset {
     @Override
     public double getValue() {
         double value = 0.0;
+        switch (this.condition) {
+            case 1:
+                value = squareFoot * 180.0;
+                value += lotSize * 0.25;
+                break;
+            case 2:
+                value = squareFoot * 130.0;
+                value += lotSize * 0.25;
+                break;
+            case 3:
+                value = squareFoot * 90.0;
+                value += lotSize * 0.25;
+                break;
+            case 4:
+                value = squareFoot * 80.0;
+                value += lotSize * 0.25;
+                break;
+            default:
+                value = 0.0;
+        }
         //A house's value is determined as
         // $180.00 per square foot (excellent)
         // $130.00 per square foot (good)

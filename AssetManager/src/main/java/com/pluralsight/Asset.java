@@ -36,7 +36,7 @@ public class Asset {
     }
 
     public double getValue() {
-        return 0.0;
+        return originalCost;
     }
 
     @Override
