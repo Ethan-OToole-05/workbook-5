@@ -11,7 +11,8 @@ public class App {
         assets.add(new House("test house", "05-13-2025", 1234, "123 Example Street", 2, 750, 350));
 
         assets.add(new Vehicle("test car", "05-12-2025", 75000, "Honda Civic", 2025, 5));
-        assets.add(new Vehicle("test car", "05-12-2025", 35000, "Honda Civic", 2019, 75000));
+        assets.add(new Vehicle("test car", "05-12-2025", 35000, "Honda Civic", 2019, 125000));
+        assets.add(new Vehicle("test car", "05-12-2025", 35000, "Pagani Zonda", 2019, 125000));
 
         for (Asset asset : assets) {
 
@@ -22,6 +23,7 @@ public class App {
             } else if (asset instanceof Vehicle) {
                 Vehicle vehicle = (Vehicle) asset;
                 System.out.println(vehicle.getYear() + " " + vehicle.getMakeModel());
+                System.out.println(vehicle.getValue());
             }
 //            System.out.println(asset);
         }

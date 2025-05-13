@@ -40,26 +40,52 @@ public class Vehicle extends Asset {
 
     @Override
     public double getValue() {
-        double value = getOriginalCost();
+        double value = getOriginalCost(), valueReduction = 0.0, reducedValueTotal = 0;
         LocalDateTime localDateTime = LocalDateTime.now();
         int currentYear = localDateTime.getYear(), vehicleYear = this.year, yearDifference = 0;
 
         yearDifference = currentYear - vehicleYear;
+        if (this.year == currentYear) {
+            valueReduction += 0.03;
+            reducedValueTotal = value * valueReduction;
+            value -= reducedValueTotal;
+        }
+        else if (yearDifference < 4) {
+            //value goes down by 3%. PER Year
+            for (int i = yearDifference; i > 0; i--) {
+                valueReduction += 0.03;
+            }
+            reducedValueTotal = value * valueReduction;
 
-        if(yearDifference < 4) {
-            //value goes down by 3%.
-        }
-        else if(yearDifference < 7) {
-            //value goes down by 6%.
-        }
-        else if(yearDifference < 11) {
-            //value goes down by 8%.
-        }
-        else {
+            value -= reducedValueTotal;
+
+        } else if (yearDifference < 7) {
+            //value goes down by 6%. Per year
+            for (int i = yearDifference; i > 3; i--) {
+                valueReduction += 0.06;
+            }
+            reducedValueTotal = value * valueReduction;
+
+            value -= reducedValueTotal;
+
+        } else if (yearDifference < 11) {
+            //value goes down by 8%. Per year.
+            for (int i = yearDifference; i > 6; i--) {
+                valueReduction += 0.08;
+            }
+            reducedValueTotal = value * valueReduction;
+
+            value -= reducedValueTotal;
+
+        } else {
             //value goes down by 1000.
         }
-        if(this.odometer > 100000 && !this.makeModel.equalsIgnoreCase("Honda") || !this.makeModel.equalsIgnoreCase("Toyota")) {
+        if (this.odometer > 100000 && !this.makeModel.contains("Honda") && !this.makeModel.contains("Toyota")) {
             //reduce value by 25%.
+            valueReduction = 0.25;
+            reducedValueTotal = value * valueReduction;
+
+            value -= reducedValueTotal;
         }
 
         // A car's value is determined as
