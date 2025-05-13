@@ -79,6 +79,7 @@ public class Vehicle extends Asset {
 
         } else {
             //value goes down by 1000.
+            value = 1000;
         }
         if (this.odometer > 100000 && !this.makeModel.contains("Honda") && !this.makeModel.contains("Toyota")) {
             //reduce value by 25%.
@@ -99,4 +100,12 @@ public class Vehicle extends Asset {
         return value;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle " +
+                " makeModel = '" + makeModel + '\'' +
+                ", year = " + year +
+                ", odometer = " + odometer +
+                ", value = " + getValue();
+    }
 }

@@ -15,15 +15,12 @@ public class App {
         assets.add(new Vehicle("test car", "05-12-2025", 35000, "Pagani Zonda", 2019, 125000));
 
         for (Asset asset : assets) {
-
             if (asset instanceof House) {
                 House house = (House) asset;
-                System.out.println(house.getAddress());
-                System.out.println(house.getValue());
+                System.out.println(house);
             } else if (asset instanceof Vehicle) {
                 Vehicle vehicle = (Vehicle) asset;
-                System.out.println(vehicle.getYear() + " " + vehicle.getMakeModel());
-                System.out.println(vehicle.getValue());
+                System.out.println(vehicle);
             }
 //            System.out.println(asset);
         }

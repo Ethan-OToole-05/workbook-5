@@ -78,4 +78,14 @@ public class House extends Asset {
 
         return value;
     }
+
+    @Override
+    public String toString() {
+        return "House" +
+                " address = '" + address + '\'' +
+                ", condition = " + condition +
+                ", squareFoot = " + squareFoot +
+                ", lotSize = " + lotSize +
+                ", value = " + getValue();
+    }
 }
