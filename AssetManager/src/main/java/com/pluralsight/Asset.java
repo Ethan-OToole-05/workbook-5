@@ -39,5 +39,8 @@ public class Asset {
         return 0.0;
     }
 
-
+    @Override
+    public String toString() {
+        return String.format("Description: %s | Date Acquired: %s | Original Cost: %s", description, dateAcquired, originalCost );
+    }
 }
