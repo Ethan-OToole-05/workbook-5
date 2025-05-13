@@ -15,11 +15,9 @@ public class App {
         assets.add(new Vehicle("test car", "05-12-2025", 35000, "Pagani Zonda", 2019, 125000));
 
         for (Asset asset : assets) {
-            if (asset instanceof House) {
-                House house = (House) asset;
+            if (asset instanceof House house) {
                 System.out.println(house);
-            } else if (asset instanceof Vehicle) {
-                Vehicle vehicle = (Vehicle) asset;
+            } else if (asset instanceof Vehicle vehicle) {
                 System.out.println(vehicle);
             }
 //            System.out.println(asset);
