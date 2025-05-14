@@ -174,8 +174,6 @@ public class LibrarySystem {
         boolean inMovieMenu = true;
         while (inMovieMenu) {
             System.out.println("\n=== Movie Menu ===");
-            System.out.println("TODO: Movie menu implementation");
-            System.out.println("This menu should include:");
             System.out.println("1. View all movies");
             System.out.println("2. View available movies");
             System.out.println("3. Search movies by title");
@@ -185,7 +183,6 @@ public class LibrarySystem {
             System.out.println("7. Return movie");
             System.out.println("8. Show movie duration");
             System.out.println();
-            System.out.println("Press Enter to continue...");
 
             int choice = getChoice();
             logger.debug("User selected movie menu option: " + choice);
@@ -228,20 +225,52 @@ public class LibrarySystem {
 
     // PLACEHOLDER MAGAZINE MENU (Students will implement)
     private void magazineMenu() {
-        System.out.println("\n=== Magazine Menu ===");
-        System.out.println("TODO: Magazine menu implementation");
-        System.out.println("This menu should include:");
-        System.out.println("- View all magazines");
-        System.out.println("- View available magazines");
-        System.out.println("- Search magazines by title");
-        System.out.println("- Search magazines by publisher");
-        System.out.println("- Search magazines by genre");
-        System.out.println("- Borrow magazine");
-        System.out.println("- Return magazine");
-        System.out.println("- Show issue information");
-        System.out.println();
-        System.out.println("Press Enter to continue...");
-        scanner.nextLine();
+        boolean inMagazineMenu = true;
+        while (inMagazineMenu) {
+            System.out.println("\n=== Magazine Menu ===");
+            System.out.println("1. View all magazines");
+            System.out.println("2. View available magazines");
+            System.out.println("3. Search magazines by title");
+            System.out.println("4. Search magazines by publisher");
+            System.out.println("5. Search magazines by genre");
+            System.out.println("6. Borrow magazine");
+            System.out.println("7. Return magazine");
+            System.out.println("8. Show issue information");
+            System.out.println();
+
+            int choice = getChoice();
+            logger.debug("User selected magazine menu option: " + choice);
+
+            switch (choice) {
+                case 1:
+                    viewAllMagazines();
+                    break;
+                case 2:
+                    viewAllAvailableMagazines();
+                    break;
+                case 3:
+                    searchMagazines();
+                    break;
+                case 4:
+                    searchByPublisher();
+                    break;
+                case 5:
+                    searchByMagazineGenre();
+                    break;
+                case 6:
+                    borrowSpecificMagazine();
+                    break;
+                case 7:
+                    returnSpecificMagazine();
+                    break;
+                case 8:
+                    inMagazineMenu = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+        }
 
         // TODO: Students should implement magazine-specific functionality here
         // Similar structure to bookMenu() but for Magazine objects
@@ -379,7 +408,7 @@ public class LibrarySystem {
     }
 
     private void searchMovies() {
-        System.out.print("Enter search term for movies (title, author, genre, or ISBN): ");
+        System.out.print("Enter search term for movies (title, director, genre, or movie ID): ");
         String query = scanner.nextLine();
 
         List<Movie> results = library.searchMovies(query);
@@ -454,6 +483,114 @@ public class LibrarySystem {
             System.out.println("Unable to return movie. Please check member ID and movie ID.");
         }
     }
+
+    //MAGAZINE-SPECIFIC METHODS
+
+    private void viewAllMagazines() {
+        List<Magazine> magazines = library.getAllMagazines();
+        if (magazines.isEmpty()) {
+            System.out.println("No magazines in the library.");
+            return;
+        }
+
+        System.out.println("\n=== All Magazines ===");
+        for (Magazine magazine : magazines) {
+            System.out.println(magazine);
+        }
+    }
+
+    private void viewAllAvailableMagazines() {
+        List<Magazine> availableMagazines = library.getAvailableMagazines();
+        if (availableMagazines.isEmpty()) {
+            System.out.println("No available magazines in the library.");
+            return;
+        }
+
+        System.out.println("\n=== All Available Magazines ===");
+        for (Magazine magazine : availableMagazines) {
+            System.out.println(magazine);
+        }
+    }
+
+    private void searchMagazines() {
+        System.out.print("Enter search term for magazines (title, publisher, genre, or magazine ID): ");
+        String query = scanner.nextLine();
+
+        List<Magazine> results = library.searchMagazines(query);
+        if (results.isEmpty()) {
+            System.out.println("No magazines found matching your search.");
+        } else {
+            System.out.println("\n=== Magazines Search Results ===");
+            for (Magazine magazine : results) {
+                System.out.println(magazine);
+            }
+        }
+    }
+
+    private void searchByPublisher() {
+        System.out.print("Enter publisher name: ");
+        String publisher = scanner.nextLine();
+
+        List<Magazine> results = library.searchMagazinesByPublisher(publisher);
+        if (results.isEmpty()) {
+            System.out.println("No magazines found by publisher: " + publisher);
+        } else {
+            System.out.println("\n=== Magazines by " + publisher + " ===");
+            for (Magazine magazine : results) {
+                System.out.println(magazine);
+            }
+        }
+    }
+
+    private void searchByMagazineGenre() {
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+
+        //MIGHT NEED TO SAY INSTANCE OF MAGAZINE (SAME WITH MOVIE?)
+
+        List<Item> results = library.searchByGenre(genre);
+        if (results.isEmpty()) {
+            System.out.println("No magazines found in genre: " + genre);
+        } else {
+            System.out.println("\n=== Magazines in " + genre + " ===");
+            for (Item magazine : results) {
+                System.out.println(magazine);
+            }
+        }
+    }
+
+    private void borrowSpecificMagazine() {
+        System.out.print("Enter member ID: ");
+        String memberId = scanner.nextLine();
+
+        System.out.print("Enter magazine ID: ");
+        String magazineId = scanner.nextLine();
+
+        //TODO: MIGHT BE A PROBLEM BORROW ITEM ONLY BORROWS BOOKS NOT MAGAZINES
+
+        if (library.borrowItem(memberId, magazineId)) {
+            System.out.println("Magazine borrowed successfully!");
+        } else {
+            System.out.println("Unable to borrow magazine. Please check member ID, magazine ID, and magazine availability.");
+        }
+    }
+
+    private void returnSpecificMagazine() {
+        System.out.print("Enter member ID: ");
+        String memberId = scanner.nextLine();
+
+        System.out.print("Enter magazine ID: ");
+        String magazineId = scanner.nextLine();
+
+        //TODO: LOOK OUT RETURN ITEM MIGHT BE AN ISSUE WITH MAGAZINES.
+
+        if (library.returnItem(memberId, magazineId)) {
+            System.out.println("Magazine returned successfully!");
+        } else {
+            System.out.println("Unable to return magazine. Please check member ID and magazine ID.");
+        }
+    }
+
 
     private int getChoice() {
         try {
