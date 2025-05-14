@@ -176,13 +176,13 @@ public class LibrarySystem {
             System.out.println("\n=== Movie Menu ===");
             System.out.println("1. View all movies");
             System.out.println("2. View available movies");
-            System.out.println("3. Search movies by title");
+            System.out.println("3. Search movies");
             System.out.println("4. Search movies by director");
             System.out.println("5. Search movies by genre");
             System.out.println("6. Borrow movie");
             System.out.println("7. Return movie");
-            System.out.println("8. Show movie duration");
-            System.out.println();
+            System.out.println("8. Back to main menu");
+            System.out.print("Enter your choice: ");
 
             int choice = getChoice();
             logger.debug("User selected movie menu option: " + choice);
@@ -222,7 +222,6 @@ public class LibrarySystem {
     // Similar structure to bookMenu() but for Movie objects
     // Should handle Movie-specific fields like duration
 
-
     // PLACEHOLDER MAGAZINE MENU (Students will implement)
     private void magazineMenu() {
         boolean inMagazineMenu = true;
@@ -230,13 +229,13 @@ public class LibrarySystem {
             System.out.println("\n=== Magazine Menu ===");
             System.out.println("1. View all magazines");
             System.out.println("2. View available magazines");
-            System.out.println("3. Search magazines by title");
+            System.out.println("3. Search magazines");
             System.out.println("4. Search magazines by publisher");
             System.out.println("5. Search magazines by genre");
             System.out.println("6. Borrow magazine");
             System.out.println("7. Return magazine");
-            System.out.println("8. Show issue information");
-            System.out.println();
+            System.out.println("8. Back to main menu");
+            System.out.print("Enter your choice: ");
 
             int choice = getChoice();
             logger.debug("User selected magazine menu option: " + choice);
@@ -379,8 +378,8 @@ public class LibrarySystem {
 
     }
 
-
     //MOVIE-SPECIFIC METHODS
+
     private void viewAllMovies() {
         List<Movie> movies = library.getAllMovies();
         if (movies.isEmpty()) {
@@ -408,14 +407,14 @@ public class LibrarySystem {
     }
 
     private void searchMovies() {
-        System.out.print("Enter search term for movies (title, director, genre, or movie ID): ");
-        String query = scanner.nextLine();
+        System.out.print("Enter movie title, author, or id: ");
+        String title = scanner.nextLine();
 
-        List<Movie> results = library.searchMovies(query);
+        List<Movie> results = library.searchMovies(title);
         if (results.isEmpty()) {
-            System.out.println("No movies found matching your search.");
+            System.out.println("No movies found");
         } else {
-            System.out.println("\n=== Movie Search Results ===");
+            System.out.println("\n=== Book Search Results ===");
             for (Movie movie : results) {
                 System.out.println(movie);
             }
@@ -590,7 +589,6 @@ public class LibrarySystem {
             System.out.println("Unable to return magazine. Please check member ID and magazine ID.");
         }
     }
-
 
     private int getChoice() {
         try {

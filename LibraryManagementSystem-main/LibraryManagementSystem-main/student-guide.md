@@ -19,8 +19,8 @@
 - [ ] **Ticket #12** - Implement Complete Movie Menu System
 
 ### Phase 3: Magazine Features
-- [ ] **Ticket #13** - Implement Magazine-Specific Methods in Library Service
-- [ ] **Ticket #14** - Create Magazine Search Methods in Library Service
+- [X] **Ticket #13** - Implement Magazine-Specific Methods in Library Service
+- [X] **Ticket #14** - Create Magazine Search Methods in Library Service
 - [ ] **Ticket #15** - Implement Complete Magazine Menu System
 
 ### Phase 4: UI Enhancements
