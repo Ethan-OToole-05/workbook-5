@@ -9,6 +9,7 @@ import com.pluralsight.service.Library;
 import com.pluralsight.service.Logger;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -445,8 +446,10 @@ public class LibrarySystem {
             System.out.println("No movies found in genre: " + genre);
         } else {
             System.out.println("\n=== Movies in " + genre + " ===");
-            for (Item movie : results) {
-                System.out.println(movie);
+            for (Item item : results) {
+                if (item instanceof Movie) {
+                    System.out.println(item);
+                }
             }
         }
     }
@@ -552,8 +555,10 @@ public class LibrarySystem {
             System.out.println("No magazines found in genre: " + genre);
         } else {
             System.out.println("\n=== Magazines in " + genre + " ===");
-            for (Item magazine : results) {
-                System.out.println(magazine);
+            for (Item item : results) {
+                if (item instanceof Magazine) {
+                    System.out.println(item);
+                }
             }
         }
     }

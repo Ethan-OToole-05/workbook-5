@@ -16,12 +16,12 @@
 ### Phase 2: Movie Features
 - [X] **Ticket #10** - Implement Movie-Specific Methods in Library Service
 - [X] **Ticket #11** - Create Movie Search Methods in Library Service
-- [ ] **Ticket #12** - Implement Complete Movie Menu System
+- [X] **Ticket #12** - Implement Complete Movie Menu System
 
 ### Phase 3: Magazine Features
 - [X] **Ticket #13** - Implement Magazine-Specific Methods in Library Service
 - [X] **Ticket #14** - Create Magazine Search Methods in Library Service
-- [ ] **Ticket #15** - Implement Complete Magazine Menu System
+- [X] **Ticket #15** - Implement Complete Magazine Menu System
 
 ### Phase 4: UI Enhancements
 - [ ] **Ticket #16** - Add Duration Display for Movie Operations
