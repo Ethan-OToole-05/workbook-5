@@ -24,8 +24,8 @@
 - [X] **Ticket #15** - Implement Complete Magazine Menu System
 
 ### Phase 4: UI Enhancements
-- [ ] **Ticket #16** - Add Duration Display for Movie Operations
-- [ ] **Ticket #17** - Add Issue Information Display for Magazine Operations
+- [X] **Ticket #16** - Add Duration Display for Movie Operations
+- [X] **Ticket #17** - Add Issue Information Display for Magazine Operations
 
 ---
 
