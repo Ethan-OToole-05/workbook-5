@@ -35,7 +35,7 @@ public abstract class Asset {
         this.description = description;
     }
 
-    public abstract double getValue();  
+    public abstract double getValue();
 
     @Override
     public String toString() {
